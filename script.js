@@ -222,3 +222,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // 初始顯示：全部
   applyFilter("all");
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const heroVideo = document.querySelector('.hero-banner-video');
+  if (!heroVideo) return;
+
+  const tryPlay = () => {
+    const p = heroVideo.play();
+    if (p && p.catch) {
+      p.catch(err => {
+        // 若還是被擋，就會進到這裡（例如省電模式）
+        console.log('Autoplay blocked:', err);
+      });
+    }
+  };
+
+  heroVideo.addEventListener('canplay', tryPlay);
+  // 再保險一次
+  setTimeout(tryPlay, 800);
+});
