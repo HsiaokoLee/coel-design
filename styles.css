@@ -129,13 +129,34 @@ header {
   pointer-events: none; /* 避免文字擋到點擊（可選） */
 }
 
-/* 手機版可以稍微縮小文字，避免太擠 */
+/* === 手機版影片：等比例縮放，不滿版，不裁切 === */
 @media (max-width: 768px) {
-  .hero-banner-content h1 {
-    font-size: 22px;
+  .hero-video-banner {
+    position: relative;
+    width: 100%;
+    height: auto;   /* 讓高度自適應影片比例 */
+    background: #000;
   }
-  .hero-banner-content p {
-    font-size: 14px;
+
+  .hero-video-banner::before {
+    content: none;  /* 停用固定比例容器 */
+  }
+
+  .hero-banner-video {
+    position: relative;
+    width: 100%;
+    height: auto;
+    object-fit: contain !important;  /* 等比例縮放，完整呈現影片 */
+    display: block;
+  }
+
+  .hero-banner-content {
+    position: absolute; /* 文字仍疊在上面 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 維持置中 */
+    width: 90%;
+    text-align: center;
   }
 }
 
