@@ -58,6 +58,35 @@ header {
 .chip:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.08); }
 .chip--primary { background: var(--chip); color: var(--chip-ink); }
 
+@media (max-width: 768px) {
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 12px 0;
+    height: auto;
+  }
+
+  .logo img {
+    height: 36px;
+    margin-bottom: 8px;
+  }
+
+  .menu {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .chip {
+    min-width: auto;
+    padding: 6px 14px;
+    font-size: 13px;
+    height: 28px;
+  }
+}
+
+
 /* =======================================
    Hero
 ======================================= */
