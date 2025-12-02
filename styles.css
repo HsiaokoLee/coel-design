@@ -45,7 +45,14 @@ header {
 }
 
 .logo { border: none; background: transparent; }
-.logo img { height: 40px; width: auto; display: block; }
+
+/* 桌機 / 預設：Logo 大一點 */
+.logo img {
+  height: 56px;      /* 原本 40px → 放大 */
+  width: auto;
+  display: block;
+}
+
 
 .menu { display: flex; gap: 10px; align-items: center; }
 
@@ -74,10 +81,11 @@ header {
     height: auto;
   }
 
-  .logo img {
-    height: 32px;
+    .logo img {
+    height: 44px;    /* 原本 32px → 放大 */
     margin-bottom: 6px;
   }
+
 
   .menu {
     width: 100%;
