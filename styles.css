@@ -46,9 +46,9 @@ header {
 
 .logo { border: none; background: transparent; }
 
-/* 桌機 / 預設：Logo 大一點 */
+/* 桌機 Logo 放大 */
 .logo img {
-  height: 56px;      /* 原本 40px → 放大 */
+  height: 64px;      /* 原本 40，現在稍微放大 */
   width: auto;
   display: block;
 }
@@ -81,10 +81,12 @@ header {
     height: auto;
   }
 
-    .logo img {
-    height: 44px;    /* 原本 32px → 放大 */
+ /* 手機版 Logo 也放大一點 */
+  .logo img {
+    height: 52px;    /* 原本 32，現在比之前明顯一點 */
     margin-bottom: 6px;
   }
+
 
 
   .menu {
@@ -135,6 +137,28 @@ header {
   text-shadow: 0 2px 6px rgba(0,0,0,.45);
   padding: 20px;
   pointer-events: none; /* 避免文字擋到點擊（可選） */
+}
+
+/* Hero 標題字級調整 */
+.hero-banner-content h1 {
+  font-size: clamp(26px, 6vw, 40px);  /* 桌機不會太巨大，手機也不會爆掉 */
+  letter-spacing: 0.12em;
+  margin: 0 0 8px;
+}
+
+.hero-banner-content p {
+  font-size: clamp(14px, 4vw, 18px);
+  margin: 4px 0 0;
+}
+
+/* 手機再稍微小一點 */
+@media (max-width: 768px) {
+  .hero-banner-content h1 {
+    font-size: 24px;
+  }
+  .hero-banner-content p {
+    font-size: 14px;
+  }
 }
 
 /* === 手機版影片：等比例縮放，不滿版，不裁切 === */

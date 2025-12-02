@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroVideo = document.querySelector('.hero-banner-video');
   if (!heroVideo) return;
 
-  // 再保險一次把屬性都設定好（有些瀏覽器只認 JS 設的）
+  // 再保險一次把屬性都設定好
   heroVideo.muted = true;
   heroVideo.autoplay = true;
   heroVideo.loop = true;
@@ -246,18 +246,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // 1. DOM 載入後先試一次
+  // 1. 載入就先試一次
   tryPlay();
 
   // 2. canplay 時再試一次
   heroVideo.addEventListener('canplay', tryPlay);
 
-  // 3. iOS 真的還是擋的情況：第一次點擊／觸控時再播放
+  // 3. 任何互動（點擊 / 觸控 / 捲動）就再試播放一次
   const resumeOnInteraction = () => {
     tryPlay();
     window.removeEventListener('touchstart', resumeOnInteraction);
     window.removeEventListener('click', resumeOnInteraction);
+    window.removeEventListener('scroll', resumeOnInteraction);
   };
+
   window.addEventListener('touchstart', resumeOnInteraction, { once: true });
   window.addEventListener('click', resumeOnInteraction, { once: true });
+  window.addEventListener('scroll', resumeOnInteraction, { once: true });
 });
